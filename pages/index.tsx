@@ -67,16 +67,18 @@ export default function Home({ pageInfo, experiences, skills, projects, socials 
       <Link href="#hero">
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
-            <Image
-              className='w-10 h-10 rounded-full object-contain filter grayscale hover:grayscale-0 cursor-pointer'
-              loader={() => urlFor(pageInfo?.heroImage).url()}
-              src={urlFor(pageInfo?.heroImage).url()}
-              width={getImageDimensions(urlFor(pageInfo?.heroImage).url()).width}
-              height={getImageDimensions(urlFor(pageInfo?.heroImage).url()).height}
-              unoptimized={true}
-              priority={true}
-              alt="Profile Pic"
-            />
+             {pageInfo?.heroImage && (
+              <Image
+                className='w-10 h-10 rounded-full object-contain filter grayscale hover:grayscale-0 cursor-pointer'
+                loader={() => urlFor(pageInfo?.heroImage).url()}
+                src={urlFor(pageInfo?.heroImage).url()}
+                width={getImageDimensions(urlFor(pageInfo?.heroImage).url()).width}
+                height={getImageDimensions(urlFor(pageInfo?.heroImage).url()).height}
+                unoptimized={true}
+                priority={true}
+                alt="Profile Pic"
+              />
+             )}
           </div>
         </footer>
       </Link>
