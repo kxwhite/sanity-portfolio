@@ -10,7 +10,7 @@ import Projects from "./Projects";
 import ContactMe from "./ContactMe";
 import Link from "next/link";
 import ProfilePic from "/assets/ProfilePic.jpeg";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { ExperienceType, PageInfoType, ProjectType, SkillType, SocialType } from "@/types";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
 import { fetchExperiences } from "@/utils/fetchExperience";
@@ -86,7 +86,7 @@ export default function Home({ pageInfo, experiences, skills, projects, socials 
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const pageInfo: PageInfoType = await fetchPageInfo();
   const experiences: ExperienceType[] = await fetchExperiences();
   const skills: SkillType[] = await fetchSkills();
@@ -101,6 +101,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
     },
-    revalidate: 10
+    // revalidate: 10
   }
 }
