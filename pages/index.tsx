@@ -61,7 +61,7 @@ export default function Home({ pageInfo, experiences, skills, projects, socials 
       </section>
 
       <section id="contactme" className="snap-start">
-        <ContactMe pageInfo={pageInfo}/>
+        {pageInfo && <ContactMe pageInfo={pageInfo}/>}
       </section>
 
       <Link href="#hero">
