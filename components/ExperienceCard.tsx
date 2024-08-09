@@ -35,7 +35,7 @@ export default function ExperienceCard({experience}: Props) {
         viewport={{ once: true }}
       >
         <Image
-          className='rounded-full md:rounded-full w-32 h-32 object-cover object-center xl:w-[200px] xl:H-[200px]'
+          className='rounded-full md:rounded-full w-32 h-32 object-cover object-center'
           loader={() => urlFor(experience?.companyImage).url()}
           src={urlFor(experience?.companyImage).url()}
           width={getImageDimensions(urlFor(experience?.companyImage).url()).width}

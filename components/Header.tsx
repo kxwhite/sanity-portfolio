@@ -35,7 +35,6 @@ export default function Header({socials} : Props) {
             fgColor='gray'
             bgColor='transparent'
           />
-
         ))}
       </motion.div>
 
