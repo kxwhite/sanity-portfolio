@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "framer-motion"
 import ProjectPic from '../assets/ProjectPic.png'
 import { ProjectType } from '@/types';
 import { urlFor } from '@/sanity.config';
 import Image from 'next/image';
 import { getImageDimensions } from '@sanity/asset-utils';
+import useWindowDimensions from '../hooks/getWindowDimensions';
 
 type Props = {
   projects: ProjectType[];
 }
 
 export default function Projects({projects}: Props) {
+  const { width } = useWindowDimensions();
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className='relative h-screen flex flex-col overflow-hidden text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'
+      style={{ height: '150vh' }}
+      className='relative flex flex-col overflow-hidden text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'
     >
       <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
         Projects
@@ -32,6 +35,7 @@ export default function Projects({projects}: Props) {
               viewport={{ once: true }}
             >
               <Image
+                className={`rounded-md object-cover w-auto ${width < 640 ? 'h-[200px]' : 'h-96'}`}
                 loader={() => urlFor(project?.image).url()}
                 src={urlFor(project?.image).url()}
                 width={getImageDimensions(urlFor(project?.image).url()).width}
@@ -42,8 +46,8 @@ export default function Projects({projects}: Props) {
             </motion.div>
 
             <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
-              <h4 className='text-4xl font-semibold text-center'>
-                <span className='underline decoration-[#F7AB0A]'>Case study {index + 1} of {projects?.length}:</span>
+              <h4 className={`text-4xl font-semibold text-center ${width < 640 && 'text-2xl'}`}>
+                <span className='underline decoration-[#F7AB0A]'>Case study {index + 1} of {projects?.length}:<br /></span>
                 &nbsp;{project?.title}
               </h4>
 
@@ -62,7 +66,7 @@ export default function Projects({projects}: Props) {
               ))}
               </div>
               <p className='text-lg text-center md:text-left'>
-                {project?.summary}
+                {project?.summary.length > 100 && width < 1024 ? `${project?.summary.slice(0, 100)}...` : project?.summary}
               </p>
             </div>
           </div>
