@@ -29,7 +29,7 @@ export default function Hero({pageInfo}: Props) {
   //   srcWidth: getImageDimensions(urlImg).width
   // };
   return (
-    <div className='h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
+    <div className='sm:h-[150vh] h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
       <BackgroundCircles />
       <Image
         className='relative rounded-full w-32 h-32 mx-auto object-cover'

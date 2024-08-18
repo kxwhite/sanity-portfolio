@@ -30,36 +30,35 @@ export default function ContactMe({pageInfo}: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      style={{ height: '150vh' }}
-      className='relative flex flex-col overflow-hidden text-center md:text-left md:flex-row max-w-7xl justify-evenly mx-auto items-center px-10'
+      className='sm:h-[150vh] h-screen relative flex flex-col overflow-hidden text-center md:text-left md:flex-row max-w-7xl justify-evenly mx-auto items-center px-10'
     >
       <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
         Contact
       </h3>
 
       <div className='flex flex-col space-y-10'>
-        <h4 className='text-4xl font-semibold text-center'>
+        <h4 className='text-4xl font-semibold text-center sm:text-2xl'>
           I have got just what you need.&nbsp;
-          <span className='underline decoration-[#F7AB0A]/50'>Lets Talk.</span>
+          <span className='underline decoration-[#F7AB0A]/50 sm:text-2xl'>Lets Talk.</span>
         </h4>
 
         <div className='space-y-10'>
           <div className='flex items-center space-x-5 justify-center'>
-            <PhoneIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-            <p className='text-2xl'>{pageInfo?.phoneNumber}</p>
+            <PhoneIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse sm:h-5 sm:w-5'/>
+            <p className='text-2xl sm:text-lg'>{pageInfo?.phoneNumber}</p>
           </div>
 
           <div className='flex items-center space-x-5 justify-center'>
-            <EnvelopeIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-            <p className='text-2xl'>{pageInfo?.email}</p>
+            <EnvelopeIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse sm:h-5 sm:w-5'/>
+            <p className='text-2xl sm:text-lg'>{pageInfo?.email}</p>
           </div>
 
           <div className='flex items-center space-x-5 justify-center'>
-            <MapPinIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-            <p className='text-2xl'>{pageInfo?.address}</p>
+            <MapPinIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse sm:h-5 sm:w-5'/>
+            <p className='text-2xl sm:text-lg'>{pageInfo?.address}</p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-2 w-fit mx-auto'>
+          <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-2 w-fit mx-auto sm:w-full'>
             <div className='flex space-x-2'>
               <input {...register('name')} placeholder='Name' type="text" className='contactInput'/>
               <input {...register('email')}placeholder='Email' type="email" className='contactInput'/>
